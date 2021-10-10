@@ -1,5 +1,8 @@
 package racinggame;
 
+import java.util.List;
+import java.util.Map;
+
 public class OutputView {
 	
 	public static void printWinner(String winnerName) {
@@ -27,8 +30,17 @@ public class OutputView {
 		System.out.print(carName+" : ");
 		for(int i=0;i<moveDistance;i++) {
 			System.out.print("-");
-		}
-		System.out.println();
+		}		
+	}
+
+	public static void printRoundResult(List<Map<String, Integer>> roundResult) {
+		for(Map<String, Integer> carResults : roundResult) {
+			for(String carName : carResults.keySet()) {			
+				OutputView.printResultPerAttempt(carName, carResults.get(carName));
+				System.out.println();	
+			}					
+		}	
+		System.out.println("");		
 	}
 	
 	

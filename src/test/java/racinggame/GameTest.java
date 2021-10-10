@@ -15,7 +15,7 @@ public class GameTest {
 
 	@BeforeEach
 	void beforeEach() {
-		game = new Game("Ray,Benz,Tico");
+		game = new Game("Ray,Benz,Tico","1");
 	}
 
 	@Test
@@ -23,7 +23,7 @@ public class GameTest {
 		assertEquals(game.getCarList().get(0).getName(), "Ray");
 		assertEquals(game.getCarList().get(1).getName(), "Benz");
 		assertThrows(IllegalArgumentException.class, () -> {
-			game = new Game("Ray,Benz,Tucson");
+			game = new Game("Ray,Benz,Tucson","1");
 		});
 
 	}
@@ -97,7 +97,18 @@ public class GameTest {
 		assertEquals(game.getWinner(carList),"Benz,Tico");
 	}
 	
-	
+	@Test
+	void 게임_시도_회수_체크() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			game = new Game("Ray,Benz,Tico","0");
+		});	
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			game = new Game("Ray,Benz,Tico","-1");
+		});	
+		
+		assertEquals(new Game("Ray,Benz,Tico","4").getRound(),4);
+	}
 
 
 }
