@@ -30,6 +30,6 @@
 7. 게임 시도 회수 로직 추가
     - Game 객체 생성 시 시도 회수 필수 입력
     - 0 or 음수값 불가
-8. 자동차 이름입력 InputView 작성 후 Controller를 통해 Game 객체와 연결
-
-9. 잘못된 값 입력 시 [ERROR]로 시작하는 메시지 출력 후 재입력
+8. Game 결과 리턴을 위한 GameResult 객체 추가
+9. 자동차 이름입력 InputView 작성 후 Controller를 통해 Game 객체와 연결
+10. 잘못된 값 입력 시 [ERROR]로 시작하는 메시지 출력 후 재입력
