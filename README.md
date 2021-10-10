@@ -19,11 +19,13 @@
     - List<Car> 목록 중 car.moveDistance가 가장 큰 자동차가 우승
     - 우승이 복수라면 쉼표로 구분
     - getWinner(List<Car>) input : List<Car>  output : String
-5. 자동차 이름입력 InputView 작성 후 Controller를 통해 Game 객체와 연결
-6. 시도 횟수 InputView 작성
-    - 시도 횟수의 제한은 없다.
-7. 게임 진행 OutputView 작성
+5. 시도 횟수 InputView 작성
+6. 게임 진행 OutputView 작성
+    - 경주할 자동차 이름 입력 가이트 출력
+    - 시도 횟수 가이드 출력
+    - 실행결과 타이틀 출력
     - 게임 진행 시 자동차이름 출력
     - 전진 데이터 막대형태 누적 출력
-8. 게임 완료 후 우승 자동차 출력 OutputView 작성
+7. 게임 완료 후 우승 자동차 출력 OutputView 작성
+8. 자동차 이름입력 InputView 작성 후 Controller를 통해 Game 객체와 연결
 9. 잘못된 값 입력 시 [ERROR]로 시작하는 메시지 출력 후 재입력
