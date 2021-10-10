@@ -5,7 +5,7 @@ public class Car {
 	private static final int VALID_NAME_LENGTH = 5;
 
 	private String name;
-	private int moveForwardCnt;
+	private int moveDistance;
 	
 
 	public Car(String name) throws IllegalArgumentException{
@@ -20,11 +20,11 @@ public class Car {
 	}
 
 	public void moveForward() {
-		this.moveForwardCnt++;
+		this.moveDistance++;
 	}
 	
-	public int getMoveForwardCnt() {
-		return this.moveForwardCnt;
+	public int getMoveDistance() {
+		return this.moveDistance;
 	}
 
 }

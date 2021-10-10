@@ -36,7 +36,7 @@ public class GameTest {
 		Car ray = new Car("Ray");
 		ray.moveForward();
 		ray.moveForward();
-		assertEquals(ray.getMoveForwardCnt(),2);
+		assertEquals(ray.getMoveDistance(),2);
 		
 		Car benz = new Car("Benz");
 		benz.moveForward();
@@ -44,7 +44,7 @@ public class GameTest {
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
-		assertEquals(benz.getMoveForwardCnt(),5);
+		assertEquals(benz.getMoveDistance(),5);
 	}
 
 
