@@ -25,5 +25,10 @@ public class GameTest {
 
 	}
 
+	@Test
+	void 자동차_전진_테스트() {
+		assertEquals(game.isMoveForward(4), true);
+		assertEquals(game.isMoveForward(3), false);
+	}
 
 }
