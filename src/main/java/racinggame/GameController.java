@@ -16,15 +16,15 @@ public class GameController {
 
 	private static void doGame() throws IllegalArgumentException {
 		OutputView.printCarNameInstruction();
-		String carNames = InputView.getInput();
+		Game game = new Game(InputView.getInput());
 		OutputView.printAttemptCountInstruction();
 		String round = InputView.getInput();
-		Game game = new Game(carNames, round);
+		game.setRound(round);
 		game.race();
-		GameResult gameResult = game.getGameResult();
+		GameHistory gameHistory = game.getGameHistory();
 		OutputView.printExcuteResultInstruction();
-		for (int i = 0; i < gameResult.getRoundResults().size(); i++) {
-			OutputView.printRoundResult(gameResult.getRoundResults().get(i));
+		for (int i = 0; i < gameHistory.getRoundResults().size(); i++) {
+			OutputView.printRoundResult(gameHistory.getRoundResults().get(i));
 		}
 		OutputView.printWinner(game.getWinner(game.getCarList()));
 	}

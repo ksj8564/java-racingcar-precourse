@@ -15,7 +15,7 @@ public class GameTest {
 
 	@BeforeEach
 	void beforeEach() {
-		game = new Game("Ray,Benz,Tico","1");
+		game = new Game("Ray,Benz,Tico");
 	}
 
 	@Test
@@ -23,7 +23,7 @@ public class GameTest {
 		assertEquals(game.getCarList().get(0).getName(), "Ray");
 		assertEquals(game.getCarList().get(1).getName(), "Benz");
 		assertThrows(IllegalArgumentException.class, () -> {
-			game = new Game("Ray,Benz,Tucson","1");
+			game = new Game("Ray,Benz,Tucson");
 		});
 
 	}
@@ -33,82 +33,79 @@ public class GameTest {
 		assertEquals(game.isMoveForward(4), true);
 		assertEquals(game.isMoveForward(3), false);
 	}
-	
+
 	@Test
 	void 차량_누적_전진_횟수_저장() {
 		Car ray = new Car("Ray");
 		ray.moveForward();
 		ray.moveForward();
-		assertEquals(ray.getMoveDistance(),2);
-		
+		assertEquals(ray.getMoveDistance(), 2);
+
 		Car benz = new Car("Benz");
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
-		assertEquals(benz.getMoveDistance(),5);
+		assertEquals(benz.getMoveDistance(), 5);
 	}
-	
+
 	@Test
 	void 단독우승() {
 		Car ray = new Car("Ray");
 		ray.moveForward();
 		ray.moveForward();
-		
+
 		Car benz = new Car("Benz");
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
-		
+
 		Car tico = new Car("Tico");
 		tico.moveForward();
-		
-		List<Car> carList = Arrays.asList(ray,benz,tico);
-		
-		assertEquals(game.getWinner(carList),"Benz");
+
+		List<Car> carList = Arrays.asList(ray, benz, tico);
+
+		assertEquals(game.getWinner(carList), "Benz");
 	}
-	
-	
+
 	@Test
 	void 공동우승() {
 		Car ray = new Car("Ray");
 		ray.moveForward();
 		ray.moveForward();
-		
+
 		Car benz = new Car("Benz");
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
 		benz.moveForward();
-		
+
 		Car tico = new Car("Tico");
 		tico.moveForward();
 		tico.moveForward();
 		tico.moveForward();
 		tico.moveForward();
 		tico.moveForward();
-		
-		List<Car> carList = Arrays.asList(ray,benz,tico);
-		
-		assertEquals(game.getWinner(carList),"Benz,Tico");
+
+		List<Car> carList = Arrays.asList(ray, benz, tico);
+
+		assertEquals(game.getWinner(carList), "Benz,Tico");
 	}
-	
+
 	@Test
 	void 게임_시도_회수_체크() {
 		assertThrows(IllegalArgumentException.class, () -> {
-			game = new Game("Ray,Benz,Tico","0");
-		});	
-		
-		assertThrows(IllegalArgumentException.class, () -> {
-			game = new Game("Ray,Benz,Tico","-1");
-		});	
-		
-		assertEquals(new Game("Ray,Benz,Tico","4").getRound(),4);
-	}
+			new Game("Ray,Benz,Tico").setRound("-1");
+		});
 
+		assertThrows(IllegalArgumentException.class, () -> {
+			new Game("Ray,Benz,Tico").setRound("0");
+		});
+
+	}
 
 }

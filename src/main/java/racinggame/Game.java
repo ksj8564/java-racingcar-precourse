@@ -9,22 +9,35 @@ import nextstep.utils.Randoms;
 
 public class Game {
 
+	private static final int MIN_MOVING_FORWARD_NUMBER = 4;
+
 	private List<Car> carList = new ArrayList<Car>();
-	private GameResult gameResult = new GameResult();
+	private GameHistory gameHistory = new GameHistory();
 	private int round;
 
-	public Game(String carNames, String round) throws IllegalArgumentException {
-		if (!Util.isOnlyNum(round)) {
-			throw new IllegalArgumentException("시도 회수는 숫자로 입력해야 합니다.");
-		}
-		if (Integer.parseInt(round) <= 0) {
-			throw new IllegalArgumentException("시도 회수는 0이나 음수가 될 수 없습니다.");
-		}
+	public Game(String carNames) throws IllegalArgumentException {
+
 		String[] carNameArr = carNames.split(",");
+		if (Util.isExistDuplItem(carNameArr)) {
+			throw new IllegalArgumentException("중복된 차량이 존재합니다.");
+		}
 		for (int i = 0; i < carNameArr.length; i++) {
 			this.carList.add(new Car(carNameArr[i]));
 		}
-		this.round = Integer.parseInt(round);
+	}
+
+	public void setRound(String round) {
+		if (!Util.isOnlyNum(round)) {
+			throw new IllegalArgumentException("시도 회수는 숫자로 입력해야 합니다.");
+		}
+		setRound(Integer.parseInt(round));
+	}
+
+	public void setRound(int round) {
+		if (round <= 0) {
+			throw new IllegalArgumentException("시도 회수는 0이나 음수가 될 수 없습니다.");
+		}
+		this.round = round;
 	}
 
 	public int getRound() {
@@ -35,12 +48,12 @@ public class Game {
 		return carList;
 	}
 
-	public GameResult getGameResult() {
-		return gameResult;
+	public GameHistory getGameHistory() {
+		return gameHistory;
 	}
 
 	public boolean isMoveForward(int i) {
-		if (i >= 4) {
+		if (i >= MIN_MOVING_FORWARD_NUMBER) {
 			return true;
 		}
 		return false;
@@ -64,7 +77,7 @@ public class Game {
 				}
 			});
 		}
-		gameResult.getRoundResults().add(roundResult);
+		gameHistory.getRoundResults().add(roundResult);
 	}
 
 	public String getWinner(List<Car> carList) {
