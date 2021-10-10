@@ -24,5 +24,28 @@ public class Game {
 			return true;
 		}
 		return false;
+	}
+
+	public String getWinner(List<Car> carList) {
+		int winMoveDistance = getWinDistance(carList);
+		
+		StringBuilder winner = new StringBuilder();		
+		for(Car car : carList) {
+			if(winMoveDistance == car.getMoveDistance()) {
+				winner.append(",");
+				winner.append(car.getName());
+			}
+		}		
+		return winner.toString().substring(1);
+	}
+
+	private int getWinDistance(List<Car> carList) {
+		int winMoveDistance = 0;
+		for(Car car : carList) {
+			if(car.getMoveDistance() > winMoveDistance) {
+				winMoveDistance = car.getMoveDistance();
+			}
+		}
+		return winMoveDistance;
 	}	
 }

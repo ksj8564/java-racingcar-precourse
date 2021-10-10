@@ -3,6 +3,9 @@ package racinggame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,6 +49,55 @@ public class GameTest {
 		benz.moveForward();
 		assertEquals(benz.getMoveDistance(),5);
 	}
+	
+	@Test
+	void 단독우승() {
+		Car ray = new Car("Ray");
+		ray.moveForward();
+		ray.moveForward();
+		
+		Car benz = new Car("Benz");
+		benz.moveForward();
+		benz.moveForward();
+		benz.moveForward();
+		benz.moveForward();
+		benz.moveForward();
+		
+		Car tico = new Car("Tico");
+		tico.moveForward();
+		
+		List<Car> carList = Arrays.asList(ray,benz,tico);
+		
+		assertEquals(game.getWinner(carList),"Benz");
+	}
+	
+	
+	@Test
+	void 공동우승() {
+		Car ray = new Car("Ray");
+		ray.moveForward();
+		ray.moveForward();
+		
+		Car benz = new Car("Benz");
+		benz.moveForward();
+		benz.moveForward();
+		benz.moveForward();
+		benz.moveForward();
+		benz.moveForward();
+		
+		Car tico = new Car("Tico");
+		tico.moveForward();
+		tico.moveForward();
+		tico.moveForward();
+		tico.moveForward();
+		tico.moveForward();
+		
+		List<Car> carList = Arrays.asList(ray,benz,tico);
+		
+		assertEquals(game.getWinner(carList),"Benz,Tico");
+	}
+	
+	
 
 
 }
