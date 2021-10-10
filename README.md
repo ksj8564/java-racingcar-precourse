@@ -19,7 +19,7 @@
     - List<Car> 목록 중 car.moveDistance가 가장 큰 자동차가 우승
     - 우승이 복수라면 쉼표로 구분
     - getWinner(List<Car>) input : List<Car>  output : String
-5. 시도 횟수 InputView 작성
+5. InputView 작성
 6. 게임 진행 OutputView 작성
     - 경주할 자동차 이름 입력 가이트 출력
     - 시도 횟수 가이드 출력
