@@ -1,18 +1,20 @@
 package racinggame;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
 
-	private List<String> carNameList;
-	
-	public Game(String carName) {
-		this.carNameList = Arrays.asList(carName.split(","));
+	private List<Car> carList = new ArrayList<Car>();
+
+	public Game(String carNames) {
+		String[] carNameArr = carNames.split(",");
+		for (int i = 0; i < carNameArr.length; i++) {
+			this.carList.add(new Car(carNameArr[i]));
+		}
 	}
 
-	public List<String> getCarNameList() {
-		return carNameList;
+	public List<Car> getCarList() {
+		return carList;
 	}
-
 }
