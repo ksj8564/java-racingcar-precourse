@@ -53,8 +53,8 @@ public class Game {
 	}
 
 	private void playRound(int round) {
-		List<Map<String,Integer>> roundResult = new ArrayList<Map<String,Integer>>();
-		for (Car car : carList) {			
+		List<Map<String, Integer>> roundResult = new ArrayList<Map<String, Integer>>();
+		for (Car car : carList) {
 			if (this.isMoveForward(Randoms.pickNumberInRange(0, 9))) {
 				car.moveForward();
 			}
@@ -62,7 +62,7 @@ public class Game {
 				{
 					put(car.getName(), car.getMoveDistance());
 				}
-			});			
+			});
 		}
 		gameResult.getRoundResults().add(roundResult);
 	}
